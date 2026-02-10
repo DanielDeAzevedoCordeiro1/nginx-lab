@@ -1,0 +1,7 @@
+services:
+  spa:
+    build: .
+    container_name: spa
+    ports:
+      - "8000:80"
+    restart: unless-stopped
