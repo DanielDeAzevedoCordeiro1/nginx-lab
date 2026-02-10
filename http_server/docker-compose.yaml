@@ -1,0 +1,43 @@
+
+services:
+  http_server_instance_1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: http_server_instance_1:0.1
+    environment:
+      - INSTANCE_NAME=instance_1
+    ports:
+      - "3000:3000"
+
+  http_server_instance_2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: http_server_instance_2:0.1
+    environment:
+      - INSTANCE_NAME=instance_2
+    ports:
+      - "3001:3000"
+
+  http_server_instance_3:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: http_server_instance_3:0.1
+    environment:
+      - INSTANCE_NAME=instance_3
+    ports:
+      - "3002:3000"
+
+  nginx:
+    image: nginx:1.28-alpine
+    depends_on:
+      - http_server_instance_1
+      - http_server_instance_2
+      - http_server_instance_3
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+
