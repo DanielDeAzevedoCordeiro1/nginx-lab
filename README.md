@@ -59,3 +59,40 @@ Conteudo retornado:
 ### Nota:
 > O servidor Nginx retornará um HTML padrão que referencia um arquivo `.js`, o qual será carregado pelo navegador e responsável por renderizar o restante da página.  
 > Essa é uma característica comum em aplicações do tipo SPA (*Single Page Application*).
+
+
+## Como Testar (http_server)
+
+Servidor Nginx atuando como load balancer, com 3 instancias/copias de um servidor de testes
+
+Baixe o Projeto:
+```bash
+git clone https://github.com/DanielDeAzevedoCordeiro1/nginx-lab.git
+```
+
+Acesse a pasta nginx-lab e depois spa:
+```bash
+cd nginx-lab && cd http_server
+```
+
+Suba seu container com a aplicacao:
+```bash
+docker compose up -d
+```
+
+Acesse o endpoint:
+```bash
+curl http://localhost/teste
+```
+
+### Nota
+> A cada requisição para este endpoint, o servidor encaminhará para uma instância diferente do backend.  
+> Como são 3 instâncias, o algoritmo [round-robin](https://dev.to/zanfranceschi/conceito-round-robin-183) envia a primeira requisição ao primeiro servidor e, sucessivamente, às demais instâncias até chegar ao último servidor e reiniciar o ciclo.
+
+### Demonstracao
+
+```bash
+curl http://localhost/teste
+```
+
+![Exemplo](assets/Screenshot_2026-02-11_18-48-34.png)
