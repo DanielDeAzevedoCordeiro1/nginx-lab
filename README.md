@@ -96,3 +96,11 @@ curl http://localhost/teste
 ```
 
 ![Exemplo](assets/Screenshot_2026-02-11_18-48-34.png)
+
+### Testes
+
+> Teste com 1 Worker (Padrao)
+
+![Wrk1](assets/Screenshot_2026-02-13_17-19-19.png)
+
+Desempenho Single Thread / 1024 conexoes
