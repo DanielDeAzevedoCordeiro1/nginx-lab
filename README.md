@@ -104,3 +104,27 @@ curl http://localhost/teste
 ![Wrk1](assets/Screenshot_2026-02-13_17-19-19.png)
 
 Desempenho Single Thread / 1024 conexoes
+
+> Teste com 4 Workers
+
+![Wrk4](assets/Screenshot_2026-02-13_17-56-30.png)
+
+> **Aumento de ~30%** ao utilizar `worker_processes auto`, o que resultou em 4 workers ativos.
+>
+> **Latência média:** ~40 ms  
+> Cada conexão consegue realizar aproximadamente:
+>
+> ```
+> 1 / 0.040 ≈ 25 requisições por segundo
+> ```
+>
+> Durante o benchmark o `wrk` utilizou **1024 conexões simultâneas** o que teoricamente resultou em:
+>
+> ```
+> 1024 conexões × 25 req/s ≈ 25.600 req/s
+> ```
+>
+> O valor obtido no teste foi **~24.410 req/s**, o que representa uma diferença natural causada por overhead e limitacoes do sistema.
+
+
+
