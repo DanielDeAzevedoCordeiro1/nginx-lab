@@ -1,1 +1,0 @@
-# Lab para testar cenarios simples de uso da ferramenta Nginx
